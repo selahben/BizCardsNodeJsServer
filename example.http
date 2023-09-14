@@ -1,0 +1,167 @@
+@local=http://localhost:3000
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTAwMzRlYTM0MDY5ZWEzMTYyNGI5ZjciLCJpc0J1c2luZXNzIjpmYWxzZSwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY5NDUxNDQwOX0.dLoklMOfFLcpJuDmLOB4KhWHmMUF-qMqp8P5dZuJxs4
+@tokenBiz=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTAwMzRlYjM0MDY5ZWEzMTYyNGI5ZmIiLCJpc0J1c2luZXNzIjp0cnVlLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjk0NTEzODMwfQ.sWWK6IK65CFem3nM5osldjvNL1Un9Z7Qo65cwchAJQg
+@tokenAdmin=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTAwMzRlYTM0MDY5ZWEzMTYyNGI5ZjkiLCJpc0J1c2luZXNzIjp0cnVlLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2OTQ1MTQ0NTV9.o7wYlEQ0PdQdDDBglMHLdYIxG9xW1P5OTWpJDWNuSBg
+@tokenTest=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTAwMzM1NzUwZGM2MjRmODMxZTc2OTMiLCJpc0J1c2luZXNzIjp0cnVlLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjk0NTEyMTg4fQ.DjWs2DVl2b0yZ9dQGFF2ye5eIAKkAU_tggKmCxKognM
+
+### USERS ###
+### Create new user
+POST {{local}}/users
+Content-Type: application/json
+
+{
+    "name":{
+        "first":"Ben",
+        "last":"Cohen"
+    },
+    "phone":"0526094760",
+    "email":"d@d8.net",
+    "password":"123456",
+    "isBusiness":true,
+    "address":{
+        "state":"",
+        "country":"Israel",
+        "city":"Netanya",
+        "street":"Gronboim",
+        "houseNumber":"30A"
+    }
+}
+
+### Login
+POST {{local}}/users/login
+Content-Type: application/json
+
+{
+    "email":"israel_israeli@gmail.com",
+    "password":"Aa123456&"
+}
+
+### Failed Login
+POST {{local}}/users/login
+Content-Type: application/json
+
+{
+    "email":"israel_israeli@gmail.com",
+    "password":"Aa123456"
+}
+
+###Get all users
+GET {{local}}/users/
+x-auth-token:{{tokenBiz}}
+
+###Get a user
+GET {{local}}/users/64fec52f3a902cbfb6d495f0
+x-auth-token:{{tokenAdmin}}
+
+### Edit user
+PUT {{local}}/users/650027d352f24431c38b675a
+Content-Type: application/json
+x-auth-token:{{tokenTest}}
+
+{
+    "name":{
+        "first":"Ben",
+        "last":"Cohen"
+    },
+    "phone":"0526094760",
+    "email":"d@d8.web",
+    "password":"123456",
+    "isBusiness":true,
+    "address":{
+        "state":"",
+        "country":"Israel",
+        "city":"Netanya",
+        "street":"Gronboim",
+        "houseNumber":"30A"
+    }
+}
+
+### Update user isBusiness
+PATCH {{local}}/users/650027d352f24431c38b675a
+Content-Type: application/json
+x-auth-token:{{token}}
+
+{
+    "isBusiness":true
+}
+
+### Delete user
+DELETE  {{local}}/users/6500335750dc624f831e7693
+Content-Type: application/json
+x-auth-token:{{tokenTest}}
+
+
+### CARDS ###
+### Get all cards
+GET {{local}}/cards
+
+### Get user cards
+GET {{local}}/cards/my-cards
+x-auth-token:{{tokenBiz}}
+
+### Get card by id
+GET {{local}}/cards/650034eb34069ea31624b9fe
+
+### Create Card
+POST {{local}}/cards
+Content-Type: application/json
+x-auth-token:{{tokenBiz}}
+
+{
+    "title":"My Card Title",
+    "subtitle":"My Card subTitle",
+    "description":"My Card description",
+    "phone":"0526094760",
+    "email":"d@d7.ben",
+    "web":"myCards.web",
+    "address":{
+        "state":"",
+        "country":"Israel",
+        "city":"Netanya",
+        "street":"Gronboim",
+        "houseNumber":"30A"
+    }
+}
+
+### Update/Edit Card
+PUT {{local}}/cards/650034eb34069ea31624ba04
+Content-Type: application/json
+x-auth-token:{{tokenBiz}}
+
+{
+    "title":"My Card Title2",
+    "subtitle":"My Card subTitle2",
+    "description":"My Card description",
+    "phone":"0526094760",
+    "email":"d@d7.ben",
+    "web":"myCards.web",
+    "address":{
+        "state":"",
+        "country":"Israel",
+        "city":"Netanya",
+        "street":"Gronboim",
+        "houseNumber":"30A"
+    }
+}
+
+### Like Card
+PATCH {{local}}/cards/650034eb34069ea31624ba04
+x-auth-token:{{tokenBiz}}
+
+### Delete card
+DELETE {{local}}/cards/65004fff6fe39b0e98646bf7
+x-auth-token:{{tokenAdmin}}
+
+### ReGenerate BizNumber
+PATCH {{local}}/cards/bizNum/650034eb34069ea31624b9fe
+x-auth-token:{{tokenAdmin}}
+
+### Static and UnRouted ###
+### Static ###
+GET {{local}}/hello.html
+### UnRouted ###
+GET {{local}}/users/user1/user2
+###
+PATCH  {{local}}/cards/card1/card2
+###
+POST {{local}}/error

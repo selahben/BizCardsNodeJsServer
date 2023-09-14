@@ -1,0 +1,8 @@
+11:13:58 - URL: /users, Status Code: 400, Message: User already registered
+11:15:09 - URL: /users, Status Code: 400, Message: User already registered
+11:16:10 - URL: /users, Status Code: 400, Message: User already registered
+11:19:24 - URL: /cards, Status Code: 400, Message: Invalid Token
+11:20:27 - URL: /cards, Status Code: 400, Message: Invalid Token
+11:23:29 - URL: /cards, Status Code: 400, Message: Access Denied. User does not have the proper authorization.
+19:57:50 - URL: /cards, Status Code: 400, Message: Access Denied. User does not have the proper authorization.
+20:00:13 - URL: /cards, Status Code: 400, Message: Access Denied. User does not have the proper authorization.

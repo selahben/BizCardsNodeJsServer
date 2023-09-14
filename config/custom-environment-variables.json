@@ -1,0 +1,13 @@
+{
+  "mongoDB": {
+    "MONGO_URI": "MONGO_URI"
+  },
+  "server": {
+    "PORT": "PORT"
+  },
+  "auth": {
+    "JWT_SECRET": "JWT_SECRET",
+    "GOOGLE_CLIENT_ID": "GOOGLE_CLIENT_ID",
+    "GOOGLE_CLIENT_SECRET": "GOOGLE_CLIENT_SECRET"
+  }
+}
