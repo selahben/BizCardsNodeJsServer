@@ -202,6 +202,11 @@ usersRouter.patch("/:id", authMW("userOwner"), async (req, res) => {
 usersRouter.delete("/:id", authMW("userOwner", "isAdmin"), async (req, res) => {
   try {
     const deletedUser = await User.findOneAndRemove({ _id: req.params.id });
+    if (!deletedUser) {
+      res.statusMessage = "User was not found..";
+      res.status(400).send("User was not found..");
+      return;
+    }
     res.json(deletedUser);
   } catch (err) {
     res.statusMessage = "Failed to delete user.";

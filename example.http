@@ -1,7 +1,7 @@
 @local=http://localhost:3000
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTAwMzRlYTM0MDY5ZWEzMTYyNGI5ZjciLCJpc0J1c2luZXNzIjpmYWxzZSwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY5NDUxNDQwOX0.dLoklMOfFLcpJuDmLOB4KhWHmMUF-qMqp8P5dZuJxs4
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTAzMzQxOTcyNGUxNzFkZDRiMjgxNTciLCJpc0J1c2luZXNzIjpmYWxzZSwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY5NDcwODkxNX0.6xhx_VqienP8XRyJs8H__Jdop28PdKZgstAdQcSy7Hw
 @tokenBiz=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTAwMzRlYjM0MDY5ZWEzMTYyNGI5ZmIiLCJpc0J1c2luZXNzIjp0cnVlLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjk0NTEzODMwfQ.sWWK6IK65CFem3nM5osldjvNL1Un9Z7Qo65cwchAJQg
-@tokenAdmin=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTAwMzRlYTM0MDY5ZWEzMTYyNGI5ZjkiLCJpc0J1c2luZXNzIjp0cnVlLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2OTQ1MTQ0NTV9.o7wYlEQ0PdQdDDBglMHLdYIxG9xW1P5OTWpJDWNuSBg
+@tokenAdmin=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTAzMzQxOTcyNGUxNzFkZDRiMjgxNTkiLCJpc0J1c2luZXNzIjp0cnVlLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2OTQ3MDg4NzB9.IOU91lnDroZNhiW37nhQFOrxn7q_G5jh2Asq_ISQt7A
 @tokenTest=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTAwMzM1NzUwZGM2MjRmODMxZTc2OTMiLCJpc0J1c2luZXNzIjp0cnVlLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjk0NTEyMTg4fQ.DjWs2DVl2b0yZ9dQGFF2ye5eIAKkAU_tggKmCxKognM
 
 ### USERS ###
@@ -32,7 +32,7 @@ POST {{local}}/users/login
 Content-Type: application/json
 
 {
-    "email":"israel_israeli@gmail.com",
+    "email":"john_doe@gmail.com",
     "password":"Aa123456&"
 }
 
@@ -50,8 +50,8 @@ GET {{local}}/users/
 x-auth-token:{{tokenBiz}}
 
 ###Get a user
-GET {{local}}/users/64fec52f3a902cbfb6d495f0
-x-auth-token:{{tokenAdmin}}
+GET {{local}}/users/65033419724e171dd4b28157
+x-auth-token:{{tokenBiz}}
 
 ### Edit user
 PUT {{local}}/users/650027d352f24431c38b675a
