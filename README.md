@@ -9,7 +9,7 @@ It was built with node.js.
 ## Install
 
 1. Download the project.
-1. In the main folder do
+1. In the main folder, open a new terminal window and do
 
 ```
 npm i
@@ -372,7 +372,7 @@ npm run seed-db
 ```
 
 1. "user_id" is entered automatically and references the user who created the card.
-1. "bizNumber is created randomly and automatically. It is unique.
+1. "bizNumber" is created randomly and automatically. It is unique.
 1. Various "\_id" properties are determined automatically.
 
 ## Libraries
