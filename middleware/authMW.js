@@ -24,13 +24,18 @@ function authMW(...roles) {
 
       if (!roles || roles.length == 0) {
         next();
+        return;
       }
 
       if (roles.includes("isAdmin") && req.user.isAdmin) {
         rolesObj.isAdmin = true;
       }
 
-      if (roles.includes("userOwner") && req.user._id == req.params.id) {
+      if (
+        roles.includes("userOwner") &&
+        req.params.id &&
+        req.user._id == req.params.id
+      ) {
         rolesObj.userOwner = true;
       }
 
@@ -74,6 +79,7 @@ function authMW(...roles) {
 
       if (rolesValidation) {
         next();
+        return;
       } else {
         res.statusMessage = "User is not authorized to do that operation.";
         res.status(400).send("User is not authorized to do that operation.");

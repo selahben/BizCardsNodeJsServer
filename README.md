@@ -65,16 +65,19 @@ npm run seed-db
 
 #### Card Routes
 
-| No. | URL               | METHOD | Authorization                               | Action                    | Return         |
-| --- | ----------------- | ------ | ------------------------------------------- | ------------------------- | -------------- |
-| 1   | /cards            | Get    | all                                         | Get all cards             | Array of cards |
-| 2   | /cards/my-cards   | Get    | The registered business user                | Get user cards            | Array of cards |
-| 3   | /cards/:id        | Get    | all                                         | Get card by id            | Card           |
-| 4   | /cards            | Post   | The registered business user                | Create new card           | Card           |
-| 5   | /cards/:id        | Put    | The registered business user                | Edit card (by id)         | Card           |
-| 6   | /cards/:id        | Patch  | registered user                             | Like a Card               | Card           |
-| 7   | /cards/:id        | Delete | business user who created the card or admin | Delete Card               | Deleted Card   |
-| 8   | /cards/bizNum/:id | Patch  | admin                                       | ReGenerate card bizNumber | Card           |
+| No. | URL               | METHOD | Authorization                               | Action                | Return         |
+| --- | ----------------- | ------ | ------------------------------------------- | --------------------- | -------------- |
+| 1   | /cards            | Get    | all                                         | Get all cards         | Array of cards |
+| 2   | /cards/my-cards   | Get    | The registered business user                | Get user cards        | Array of cards |
+| 3   | /cards/:id        | Get    | all                                         | Get card by id        | Card           |
+| 4   | /cards            | Post   | The registered business user                | Create new card       | Card           |
+| 5   | /cards/:id        | Put    | The registered business user                | Edit card (by id)     | Card           |
+| 6   | /cards/:id        | Patch  | registered user                             | Like a Card           | Card           |
+| 7   | /cards/:id        | Delete | business user who created the card or admin | Delete Card           | Deleted Card   |
+| 8   | /cards/bizNum/:id | Patch  | admin                                       | Change card bizNumber | Card           |
+
+\* Changing card bizNumber : body{"bizNumber":\<someNumber\>}.
+If no new number is passed in the body of the request, a new number will be generated automatically.
 
 ### Models
 

@@ -53,10 +53,6 @@ authRouter.get("/google/success", async (req, res) => {
     const token = newUser.generateAuthToken();
     res.send({ token });
   }
-
-  //   console.log(userProfile);
-  //   res.render("pages/success", { user: userProfile });
-  //res.send(userProfile);
 });
 authRouter.get("/google/error", (req, res) => res.send("error logging in"));
 

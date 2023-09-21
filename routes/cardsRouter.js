@@ -122,15 +122,46 @@ cardsRouter.delete("/:id", authMW("cardOwner", "isAdmin"), async (req, res) => {
   }
 });
 
-//ReGenerate card bizNumber
+//Change card bizNumber (from body or auto generate)
 cardsRouter.patch("/bizNum/:id", authMW("isAdmin"), async (req, res) => {
   try {
-    const updatedCard = await Card.findOneAndUpdate(
+    const card = await Card.findOne({ _id: req.params.id });
+    if (!card) {
+      res.statusMessage = "No card with this ID was found.";
+      res.status(401).send("No card with this ID was found.");
+    }
+  } catch (err) {
+    res.statusMessage = "Database Error.";
+    res.status(401).send(err.message);
+  }
+  if (Object.keys(req.body).length > 0 && req.body.bizNumber) {
+    try {
+      const card = await Card.findOne({
+        bizNumber: req.body.bizNumber,
+        _id: { $ne: req.params.id },
+      });
+      if (card) {
+        res.statusMessage = "A card with this bizNumber already exists.";
+        res.status(401).send("A card with this bizNumber already exists.");
+        return;
+      }
+    } catch (err) {
+      res.statusMessage = "Database Error.";
+      res.status(401).send(err.message);
+    }
+  }
+  try {
+    const card = await Card.findOneAndUpdate(
       { _id: req.params.id },
-      { bizNumber: await generateBizNumber() },
+      {
+        bizNumber:
+          Object.keys(req.body).length > 0 && req.body.bizNumber
+            ? req.body.bizNumber
+            : await generateBizNumber(),
+      },
       { new: true }
     );
-    res.json(updatedCard);
+    res.send(card);
   } catch (err) {
     res.statusMessage = "Failed to update user.";
     res.status(400).send("Failed to update user.");

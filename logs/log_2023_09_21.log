@@ -1,0 +1,5 @@
+22:04:58 - URL: /, Status Code: 404, Message: 404: Page not found.
+22:31:57 - URL: /cards/bizNum, Status Code: 401, Message: Access Denied. No token provided
+22:37:44 - URL: /cards/bizNum, Status Code: 400, Message: The Card Likes where not updated.
+22:38:19 - URL: /cards/bizNum/65033419724e171dd4b28157, Status Code: 400, Message: User is not authorized to do that operation.
+22:53:23 - URL: /cards/bizNum/65033419724e171dd4b2815, Status Code: 401, Message: Database Error.
